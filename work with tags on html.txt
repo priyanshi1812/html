@@ -4,9 +4,9 @@
 </head>
 <body>
 <h1>hello world</h1>
-<h2>hello world</h2>
-<h3>hello world</h3>
-<h4>hello world</h4>
+<h2>hello yahoo</h2>
+<h3>hello google</h3>
+<h4>hello github</h4>
 <p>hi <b>everyone</b> ssup</P>
 <p>namaste</p>
 <p>
