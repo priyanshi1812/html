@@ -1,0 +1,100 @@
+<html>
+<head>
+<title>practice</title>
+</head>
+<body>
+<h1>hello world</h1>
+<h2>hello world</h2>
+<h3>hello world</h3>
+<h4>hello world</h4>
+<p>hi <b>everyone</b> ssup</P>
+<p>namaste</p>
+<p>
+bye
+</P>
+<marquee> send email </marquee>
+<img src="http://52.205.128.161/a.jpg">
+</body>
+</html>
+
+###########################################################################################
+
+<html>
+<head>
+<title>practice</title>
+</head>
+<body>
+<h2> this is page2 </h2>
+<iframe src="index.html" height=300 width=300> </iframe></br>
+<iframe src="http://52.205.128.161/wind.mp4" height=200 width=200> </iframe>
+<!--a href="https://www.google.com" > click here to open google </a></br>
+<a href="index.html"> click to open index.html</a>
+<meta http-equiv="refresh" content="7;url=https://www.google.com" /-- >
+</body>
+</html>
+
+##############################################################################################
+
+<html>
+<head>
+<title>practice</title>
+</head>
+<body>
+<h1>hello world</h1>
+<form>
+Enter your name : <input name="x" type="text" placeholder="enter your name"> </br></br>
+Enter your password : <input name="y" type="password" placeholder="enter your password"> </br></br>
+Enter your email : <input name="z" type="email" placeholder="enter your email"> </br></br>
+Enter your phone no : <input name="ph" type="number" placeholder="enter your phone no"> </br></br>
+<input name="n" type="radio" placeholder="python">python </br></br>
+<input name="n" type="radio" placeholder="go">go </br></br>
+<input name="n" type="radio" placeholder="java">java </br></br>
+<input type="submit"></br>
+<input name="m" type="checkbox" placeholder="ml">ml </br></br>
+<input name="m" type="checkbox" placeholder="ai">ai</br></br>
+<input name="m" type="checkbox" placeholder="cloud">cloud </br></br>
+<input type="submit"></br></br>
+<textarea name="s" cols="50" rows="15"> </textarea>
+<input type="submit">
+</form>
+</body>
+</html>
+
+############################################################################################
+
+-->> in /var/www/html/(filename.html)
+
+<html>
+<head>
+<title>practice</title>
+</head>
+<body bgcolor="yellow">
+<h1> hello all </h1>
+<form action="/cgi-bin/file_name.cgi" method="post">
+<input type="text" name="x" placeholder="enter your command">
+<input type="submit" value="run">
+</form>
+</body>
+</html>
+
+-->> in /var/www/cgi-bin/(filename.cgi) 
+
+#!/usr/bin/python3
+
+import cgi
+import cgitb
+import subprocess
+#to show common error in browser
+cgitb.enable()
+
+print("Content-type:text/html")
+print("")
+
+webdata=cgi.FieldStorage() #this will collect all html code with data
+#now extracting value of x
+data=webdata.getvalue('x')
+#sending output to client via web server
+output=subprocess.getoutput(data)
+print("<pre>")
+print(output)
+print("</pre>")
