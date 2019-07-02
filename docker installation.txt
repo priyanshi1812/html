@@ -1,0 +1,69 @@
+Install docker using repo:--
+
+first make repo using
+
+* vi /etc/yum.repos.d/adhoc.repo
+
+[os]
+baseurl=http://13.234.66.67/summer19/rhel75
+gpgcheck=0
+
+[docker]
+baseurl=http://13.234.66.67/summer19/kubernetes
+gpgcheck=0
+
+[dpy]
+baseurl=http://13.234.66.67/summer19/python3
+gpgcheck=0
+
+* make sure python is installed
+
+*or use yum install python3*
+
+#######################################################################################################
+
+* In /var/www/html/docker.html file write -->
+
+<html>
+<head>
+        <title> docker </title>
+</head>
+<body>
+        <h1> Managing dockers and containers</h1>
+        <form method="POST" action="/cgi-bin/docker.cgi">
+                <input type="radio" name="x" value="installd"> install docker </br></br>
+                <input type="radio" name="x" value="startd"> start docker </br></br>
+                <input type="submit" value="perform">
+        </form>
+</body>
+</html>
+
+#######################################################################################################
+
+ * In /var/www/cgi-bin/docker.cgi file write :-----
+
+#!/usr/bin/python3
+import cgi
+import cgitb
+import subprocess,os
+cgitb.enable()
+
+print("Content-type:text/html")
+print("")
+
+# get html page and data
+web=cgi.FieldStorage()
+data=web.getvalue('x')
+
+#print(data)
+check=os.system('sudo rpm -q docker')
+if check == 0 :
+        print("docker already installed")
+elif check!=0 :
+        print("please wait docker is being installed..")
+        subprocess.getoutput('sudo yum install docker -y')
+else :
+        print("don't know what is going on")
+print(data)
+
+#################################################################################################
